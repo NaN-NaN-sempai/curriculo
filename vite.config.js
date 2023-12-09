@@ -5,7 +5,7 @@ import { defineConfig } from 'vite';
 export default defineConfig({
 	plugins: [sveltekit(), ViteCSSExportPlugin()],
 	
-	/* build: {
+	build: {
 		target: 'esnext' //browsers can handle the latest ES features
-	} */
+	}
 });

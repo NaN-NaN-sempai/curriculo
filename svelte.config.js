@@ -10,10 +10,8 @@ const config = {
 		adapter: adapter({
 			
 			pages: 'build',
-			assets: 'build',
-			fallback: undefined,
-			precompress: false,
-			strict: true
+			assets: 'build', 
+			strict: false
 		}),
 
 		alias: {

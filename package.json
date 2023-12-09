@@ -3,6 +3,7 @@
 	"version": "0.0.1",
 	"private": true,
 	"scripts": {
+		"deploy": "gh-pages -d build -t true",
 		"dev": "vite dev",
 		"build": "vite build",
 		"preview": "vite preview",
@@ -23,6 +24,7 @@
 	},
 	"type": "module",
 	"dependencies": {
+		"gh-pages": "^6.1.0",
 		"vite-plugin-css-export": "^2.0.0"
 	}
 }
