@@ -152,6 +152,11 @@
 </body>
 
 <script>
+    const repo = "curriculo";
+    const branch = "gh-pages";
+
+
+
     let fileColors = {
         html: '#e34c26',
         css: '#1572b6',
@@ -292,7 +297,7 @@
 
         return reg.test(str);
     }
-    fetch("https://api.github.com/repos/NaN-NaN-sempai/curriculo/git/trees/gh-pages?recursive=1")
+    fetch(`https://api.github.com/repos/NaN-NaN-sempai/${repo}/git/trees/${branch}?recursive=1`)
     .then(r=>r.json())
     .then(list => {        
         let folders = list.tree.filter(file => file.type == "tree" && !file.path.includes("/"));
@@ -335,11 +340,9 @@
             }
         });
 
-        fetch("https://api.github.com/repos/NaN-NaN-sempai/curriculo/contents/?ref=gh-pages")
+        fetch(`https://api.github.com/repos/NaN-NaN-sempai/${repo}/contents/?ref=${branch}`)
         .then(r=>r.json())
         .then(list => {
-
-            console.log(list);
             list.filter(f=>f.type=="dir").forEach((item) => {
                 let {name} = item;
 
@@ -355,9 +358,7 @@
                     let graph = document.createElement("div");
                         graph.className = "graph";
 
-                        let entries = (!dir)? []: Object.entries(dir.files).sort((a, b) => b[1] - a[1]);
-
-                        console.log(entries);
+                        let entries = Object.entries(dir.files).sort((a, b) => b[1] - a[1]);
 
                         for([key] of entries){
                             let porc = (dir.files[key]/dir.size)*100;
@@ -380,4 +381,5 @@
         })
     })
 </script>
+
 </html>
