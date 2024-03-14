@@ -1,7 +1,7 @@
 <script>
     import { onMount } from "svelte";
 
-    export let speed = "50s";
+    export let speed = "150s";
     export let direction = "forwards";
 
     let scroller;

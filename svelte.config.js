@@ -16,17 +16,16 @@ const config = {
 			strict: false
 		}),
 
+        paths: {
+            base: process.env.NODE_ENV === 'production' ? '/curriculo' : '',
+        },
+
 		alias: {
 			$style: "src/sass",
 			$assets: "src/assets",
 			$components: "src/components",
 			$fonts: "src/fonts",
 		},
-
-		
-        paths: {
-            base: process.env.NODE_ENV === 'production' ? '/curriculo' : '',
-        }
 	}
 };
 
