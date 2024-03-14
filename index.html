@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.png">
     <title>Curriculos</title>
     <style>
         :root {
@@ -334,9 +335,11 @@
             }
         });
 
-        fetch("https://api.github.com/repos/NaN-NaN-sempai/curriculo/contents/")
+        fetch("https://api.github.com/repos/NaN-NaN-sempai/curriculo/contents/?ref=gh-pages")
         .then(r=>r.json())
         .then(list => {
+
+            console.log(list);
             list.filter(f=>f.type=="dir").forEach((item) => {
                 let {name} = item;
 
@@ -352,7 +355,9 @@
                     let graph = document.createElement("div");
                         graph.className = "graph";
 
-                        let entries = Object.entries(dir.files).sort((a, b) => b[1] - a[1]);
+                        let entries = (!dir)? []: Object.entries(dir.files).sort((a, b) => b[1] - a[1]);
+
+                        console.log(entries);
 
                         for([key] of entries){
                             let porc = (dir.files[key]/dir.size)*100;
