@@ -6,10 +6,10 @@
 
     let formation = [
         {
-            title: "CS50 - HARVARD",
-            type: "CURSO PROFISSIONALIZANTE",
+            title: "CS50's Web Programming with Python and JavaScript",
+            type: "TREINAMENTO ESPECIALIZADO",
             time: "2023",
-            content: "-CURSO EM HARVARD - A INSERIR-",
+            content: "Participei do curso disponibilizado por Harvard, onde aprofundei meus conhecimentos em programação web. Adquiri conceitos essenciais para desenvolver aplicativos web modernos e dinâmicos.",
         },
         {
             title: "Ciências da Computação",

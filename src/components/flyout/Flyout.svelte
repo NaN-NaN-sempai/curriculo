@@ -19,11 +19,11 @@
             </Comp.CompoundItem>
         </a>
         
-        <div class="item">
+        <a class="item" href="tel:+5574981395580">
             <Comp.CompoundItem icon="Phone" color={palette.secondary}>
                 +55 (71) 98883-4482
             </Comp.CompoundItem>
-        </div>
+        </a>
 
         <a class="link item" href="https://wa.me/+5574981395580" target="_blank">
             <Comp.CompoundItem icon="Whatsapp" color={palette.secondary} colorB={palette.highlight}>

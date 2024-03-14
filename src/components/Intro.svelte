@@ -28,6 +28,7 @@
                 "Experiência em scripts JSX para aplicativos Adobe",
                 "Experiência em desenvolvimento WEB e mobile",
                 "Experiência na criação de sistemas",
+                "Experiência em desenvolvimento com Arduino",
             ]
         },
     ]
