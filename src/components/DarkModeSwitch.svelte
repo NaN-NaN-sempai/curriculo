@@ -134,13 +134,11 @@
             top: -35px;
             left: 5px;
             opacity: 1;
-            animation: twinkle 0.6s infinite;
         }
 
         &::after {
             top: -10px;
             left: 25px;
-            animation: twinkle 0.6s infinite -0.2s;
         }
     }
 
