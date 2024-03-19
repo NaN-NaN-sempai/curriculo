@@ -15,7 +15,7 @@
             title: "Ciências da Computação",
             type: "ENSINO SUPERIOR - INCOMPLETO",
             time: "2019/2023",
-            content: "Cursei a Licenciatura no IF Baiano - Sr. do Bonfim, onde adquiri um sólido conhecimento em programação e tecnologia.",
+            content: "Consolidei ainda mais meu conhecimento de programação e tecnologia durante o curso de Licenciatura no IF Baiano - Sr. do Bonfim, onde coloquei em prática a maioria dos meus projetos.",
         },
         {
             title: "Suporte Tecnico em TI",
@@ -28,20 +28,20 @@
         {
             title: "LGPD",
             type: "CURSO PROFISSIONALIZANTE",
-            time: "4 hrs - 2021",
+            time: "4 horas - 2021",
             content: `Fiz um curso online no SENAI São Paulo sobre "Privacidade e Proteção de Dados", aprendendo sobre segurança de informações e regulamentações de privacidade.`,
-        },
-        {
-            title: "Competências Transversais em Empreendedorismo",
-            type: "CURSO PROFISSIONALIZANTE",
-            time: "14 hrs - 2017",
-            content: "Fiz um curso a distância no SENAI Bahia sobre Empreendedorismo, adquirindo habilidades essenciais relacionadas ao empreendedorismo e à gestão de negócios.",
         },
         {
             title: "Competências Transversais em Lógica de Programação",
             type: "CURSO PROFISSIONALIZANTE",
-            time: "14 hrs - 2017",
+            time: "14 horas - 2017",
             content: "Cursei a distância no SENAI Bahia o curso de Lógica de Programação, adquirindo fundamentos em programação e lógica.",
+        },
+        {
+            title: "Competências Transversais em Empreendedorismo",
+            type: "CURSO PROFISSIONALIZANTE",
+            time: "14 horas - 2017",
+            content: "Fiz um curso a distância no SENAI Bahia sobre Empreendedorismo, adquirindo habilidades essenciais relacionadas ao empreendedorismo e à gestão de negócios.",
         },
     ];
 </script>

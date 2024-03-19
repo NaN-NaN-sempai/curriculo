@@ -8,9 +8,9 @@
         {
             title: "DESIGNER GRAFICO",
             type: "INFORMAL",
-            time: "2021/2023",
+            time: "2021/2024",
             content: `
-            Trabalhei na empresa Inovar Personalizações como designer, criando designs exclusivos para encadernações e cartonados. Durante esse período, aprimorei o sistema de gestão de clientes que usávamos, aplicando minhas habilidades de desenvolvedor inovador.
+            Trabalhei na Inovar Personalizações como designer, criando designs exclusivos para encadernações e cartonados. Durante esse período, apliquei minhas habilidades de desenvolvedor ao introduzir uma nova metodologia para a criação dos designs e criando Scripts JSX para a Adobe, além de aprimorar o sistema de gestão de clientes e pedidos utilizado pela empresa.
             `,
         },
     ];
@@ -36,7 +36,7 @@
             type: "INFORMAL",
             time: "PERIODICAMENTE",
             content: `
-            Atuo como freelancer, oferecendo meus serviços tanto na programação quanto no design.
+            Atuo como freelancer, oferecendo meus serviços tanto em programação quanto em design. Também dou aulas e tutoriais sobre a área.
             `,
         },
     ];

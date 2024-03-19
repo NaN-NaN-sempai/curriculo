@@ -7,7 +7,7 @@
     
     let declaration = [
         {
-            content: "Procuro uma oportunidade profissional que me conduza a uma jornada de aprendizado e crescimento. Sou flexível, criativo e eficiente, adapto-me facilmente a mudanças. Minhas experiências anteriores me enriqueceram com habilidades valiosas. Estou entusiasmado para embarcar nesta jornada em direção ao sucesso profissional!",
+            content: "Estou em busca de uma oportunidade profissional que me proporcione uma jornada de aprendizado e desenvolvimento excepcional. Sou flexível, criativo, eficiente,  e me adapto facilmente a novos desafios e mudanças. Estou entusiasmado para aplicar minhas habilidades e embarcar nessa jornada em direção ao sucesso profissional!",
         },
     ];
     let diferentials = [
