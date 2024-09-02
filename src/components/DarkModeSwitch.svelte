@@ -75,7 +75,7 @@
         display: block;
         width: 40px;
         height: 40px;
-        background-color: #7B7B7B;
+        background-color: palette.$moonGrey;
         border-radius: 9999px;
         box-shadow: 10px 0px 0 0 rgba(#000000, 0.2) inset;
 

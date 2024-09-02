@@ -16,6 +16,13 @@
             content: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec elementum id metus ac fermentum. Nullam non tellus turpis. Proin a lacus rutrum, molestie quam id, imperdiet nunc. Praesent ullamcorper turpis non finibus convallis."
         },
     ];
+    
+    import { onMount } from "svelte";
+    let language = "PT";
+    onMount(() => {
+        document.addEventListener("languageSwitch", ({detail}) => language = detail);
+    });
+
 </script>
 
 
@@ -43,22 +50,22 @@
             <div class="content{item.list? " list":""}">
                 {#if item.title || item.type || item.time }
                     <div class="contentHeader">
-                        {#if item.title} <span class="contentTitle"> {item.title} </span> {/if}
-                        {#if item.type}  <span class="contentType">  {item.type}  </span> {/if}
-                        {#if item.time}  <span class="contentTime">  {item.time}  </span> {/if}
+                        {#if item.title} <span class="contentTitle"> {typeof item.title == "string"? item.title: item.title[language]} </span> {/if}
+                        {#if item.type}  <span class="contentType">  {typeof item.type == "string"? item.type: item.type[language]}  </span> {/if}
+                        {#if item.time}  <span class="contentTime">  {typeof item.time == "string"? item.time: item.time[language]}  </span> {/if}
                     </div>
                 {/if}
 
                 {#if item.list}
                     
-                    {#each item.content as listItem}
+                    {#each item.content[language] as listItem}
                         <span class="listItem">
                             {listItem}
                         </span>
                     {/each}
 
                 {:else}
-                    {@html "<style>a { color: "+ palette.highlight + "; } </style>" + item.content}
+                    {@html "<style>a { color: "+ palette.highlight + "; } </style>" + item.content[language]}
                 {/if}
             </div>
         </div>

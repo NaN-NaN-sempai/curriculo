@@ -22,6 +22,9 @@ $primary: var(--clr-primary);
 
     --gradientBegin: #EA7243;
     --gradientEnd: #E0881D;
+
+    --switchTextColor: var(--highlight);
+    --switchTextColor__checked: white;
 }
 
 :has(#darkModeSwitch:not(:checked)) {
@@ -35,6 +38,9 @@ $primary: var(--clr-primary);
 
     --gradientBegin: #aa4219;
     --gradientEnd: #c76e00;
+
+    --switchTextColor: var( --highlight);
+    --switchTextColor__checked: white;
 }
 
 
@@ -48,6 +54,11 @@ $iconbg: var(--iconbg);
 
 $gradientBegin: var(--gradientBegin);
 $gradientEnd: var(--gradientEnd);
+
+$moonGrey: #7B7B7B;
+
+$switchTextColor: var(--switchTextColor);
+$switchTextColor__checked: var(--switchTextColor__checked);
 
 :export {
     primary: $primary;

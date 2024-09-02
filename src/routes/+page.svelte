@@ -7,6 +7,19 @@
     import Year from '$components/Year.svelte';
     import Works from '$components/Works.svelte';
     import DarkModeSwitch from '$components/DarkModeSwitch.svelte';
+    import ChooseLanguageSwitch from '$components/ChoseLanguageSwitch.svelte';
+    
+    import { onMount } from "svelte";
+    let language = "PT";
+    onMount(() => {
+        document.addEventListener("languageSwitch", ({detail}) => language = detail);
+    });
+
+    let title = {
+        PT: "CURRÍCULO",
+        EN: "CURRICULUM",
+        FR: "CURRICULUM VITAE"
+    }
 </script>
 
 
@@ -15,6 +28,9 @@
     <div class="inner">
         <div class="darkmode">
             <DarkModeSwitch />
+        </div>
+        <div class="chooselang">
+            <ChooseLanguageSwitch />
         </div>
         <div class="intro">
             <Intro />
@@ -32,7 +48,7 @@
             <div class="secondFlyout">
                 <SecondFlyout />
             </div>
-            <Year><span class="hidden">CURRÍCULO</span> 2024</Year>
+            <Year><span class="hidden">{title[language]}</span> 2024</Year>
         </div>
         <div class="projects">
             <Projects />
@@ -61,6 +77,12 @@
     }
 
     .darkmode {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .chooselang {
         display: flex;
         flex-direction: column;
         align-items: center;
