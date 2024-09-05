@@ -152,8 +152,23 @@
 </body>
 
 <script>
-    const repo = "curriculo";
-    const branch = "gh-pages";
+    const repo = "Resume-Svelte";
+    const branch = "main";
+
+    let gitList = [
+        {
+            name: "Svelte 2024",
+            repo: "Resume-Svelte",
+            branch: "main",
+            link: "https://luishenrique-resume.vercel.app/",
+        },
+        {
+            name: "2024",
+            repo: "curriculo",
+            branch: "gh-pages",
+            link: "https://nan-nan-sempai.github.io/curriculo/2024",
+        },
+    ];
 
 
 
@@ -297,89 +312,95 @@
 
         return reg.test(str);
     }
-    fetch(`https://api.github.com/repos/NaN-NaN-sempai/${repo}/git/trees/${branch}?recursive=1`)
-    .then(r=>r.json())
-    .then(list => {        
-        let folders = list.tree.filter(file => file.type == "tree" && !file.path.includes("/"));
 
-        let tree = folders.map(file => {
-            let files = list.tree.filter(f =>
-                f.type != "tree" && // ------------------------------------------------------ not dir
-                f.path != file.path && // --------------------------------------------------- not self
-                f.path.includes(file.path) && // -------------------------------------------- only in this dir
-                !f.path.includes("node_modules") && // -------------------------------------- not node_modules files
-                !(f.path.includes("package-lock") || f.path.includes("package.json")) && // - not package json
-                !(f.path.includes("css") && f.path.includes("map")) && // ------------------- not css map
-                !isMedia(f.path.toLowerCase()) // ------------------------------------------- not media
+    async function fetchFileTypes(repo, branch) {
+        const response = await fetch(`https://api.github.com/repos/NaN-NaN-sempai/${repo}/git/trees/${branch}?recursive=1`);
+        const data = await response.json();
+        
+        // Contar os tipos de arquivos
+        const fileCounts = {};
+
+        let files = data.tree.filter(file => {
+            const extension = file.path.split('.').pop();
+
+            return (
+                extension != "md" && // -------------------------------------------------------- not md
+                extension != "npmrc" && // ----------------------------------------------------- not npmrc
+                !file.path.includes("gitignore") && // ----------------------------------------- not gitignore
+                !file.path.includes("prettierignore") && // ------------------------------------ not prettierignore
+                !file.path.includes("eslintignore") && // -------------------------------------- not eslintignore
+                !file.path.includes("node_modules") && // -------------------------------------- not node_modules files
+                !(file.path.includes("package-lock") || file.path.includes("package.json")) // - not package json
             );
+        });
 
-            let totalSize = 0;
-            let fileList = {}
-
-            files.forEach(f => {
-                let type = f.path.split("/").at(-1)
-                            .split(".").at(-1)
-                            .toLowerCase();
-
-                let {size} = f;
-
-                if(!fileList[type]) fileList[type] = size;
-                else fileList[type] += size;
-
-                if((fileList["sass"] || fileList["scss"]) && fileList["css"])
-                    delete fileList["css"];
-            });
- 
-            for(key in fileList)
-                totalSize += fileList[key];
-
-            return {
-                dir: file.path,
-                size: totalSize,
-                files: fileList
+        files.forEach(file => {
+            if (file.type === 'blob') { // Verifique se é um arquivo e não um diretório
+                const extension = file.path.split('.').pop();
+                fileCounts[extension] = (fileCounts[extension] || 0) + 1;
             }
         });
 
-        fetch(`https://api.github.com/repos/NaN-NaN-sempai/${repo}/contents/?ref=${branch}`)
-        .then(r=>r.json())
-        .then(list => {
-            list.filter(f=>f.type=="dir").forEach((item) => {
-                let {name} = item;
+        // Calcular a porcentagem
+        const totalFiles = Object.values(fileCounts).reduce((sum, count) => sum + count, 0);
+        const percentages = {};
+        for (const [ext, count] of Object.entries(fileCounts)) {
+            percentages[ext] = parseFloat(((count / totalFiles) * 100).toFixed(2));
+        }
 
-                let li = document.createElement('li');
-                    li.id = name;
+        return percentages;
+    }
 
-                    let a = document.createElement('a');
-                        a.className = "link";
-                        a.innerHTML = name;
-                        a.href = "./"+name;
 
-                    let dir = tree.find(t=>t.dir==name); 
-                    let graph = document.createElement("div");
-                        graph.className = "graph";
+    gitList.forEach(git => {
+        fetchFileTypes(git.repo, git.branch).then(percentages => {
 
-                        let entries = Object.entries(dir.files).sort((a, b) => b[1] - a[1]);
+            let {name, link} = git;
 
-                        for([key] of entries){
-                            let porc = (dir.files[key]/dir.size)*100;
-                            let color = fileColors[key] || randomColor();
+            let li = document.createElement('li');
+                li.id = name;
 
-                            let span = document.createElement("span");
-                                span.innerHTML = key;
-                                span.title = `${key.toUpperCase()} - ${porc.toFixed(1)}% ${fileDesc[key]? "- "+fileDesc[key]: ""}`;
-                                span.style.setProperty("--_porc", porc+"%");
-                                span.style.setProperty("--_color", color);
-                            graph.append(span);
-                        }
+                let a = document.createElement('a');
+                    a.className = "link";
+                    a.innerHTML = name;
+                    a.href = link;
 
-                    li.append(a, graph);
+                let graph = document.createElement("div");
+                    graph.className = "graph";
+
+                for (const [ext, percent] of Object.entries(percentages)) {
+                    console.log(`${ext || 'Sem extensão'}: ${percent}`);
+            
+                
+                    let porc = percent;
+                    let key = ext;
                     
-                document.querySelector(".list").append(li);
+                    let color = fileColors[key] || randomColor();
 
-                document.querySelector(".spinner").classList.add("hide");
-            })
-        })
-    })
+                    let span = document.createElement("span");
+                        span.innerHTML = key;
+                        span.title = `${key.toUpperCase()} - ${porc.toFixed(1)}% ${fileDesc[key]? "- "+fileDesc[key]: ""}`;
+                        span.style.setProperty("--_porc", porc+"%");
+                        span.style.setProperty("--_color", color);
+                    graph.append(span); 
+                }
+
+            li.append(a, graph);
+            document.querySelector(".list").append(li);
+
+            document.querySelector(".spinner").classList.add("hide");
+
+            console.log(percentages);
+            
+
+
+        }).catch(error => {
+            console.error("Erro ao buscar tipos de arquivos:", error);
+        });
+    });
+
+
+
 </script>
 
 </html>

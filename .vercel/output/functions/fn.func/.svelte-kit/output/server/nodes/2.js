@@ -1,0 +1,8 @@
+
+
+export const index = 2;
+let component_cache;
+export const component = async () => component_cache ??= (await import('../entries/pages/_page.svelte.js')).default;
+export const imports = ["_app/immutable/nodes/2.dc215a1d.js","_app/immutable/chunks/2.ff691c3f.js","_app/immutable/chunks/scheduler.9f63a26f.js","_app/immutable/chunks/index.3c5c5b64.js","_app/immutable/chunks/preload-helper.a4192956.js"];
+export const stylesheets = ["_app/immutable/assets/2.10e47f81.css","_app/immutable/assets/Declaration.ea84a611.css","_app/immutable/assets/Diferentials.1fa87430.css","_app/immutable/assets/Education.80a766f0.css","_app/immutable/assets/Email.e011e96c.css","_app/immutable/assets/Github.f707adc8.css","_app/immutable/assets/Location.34e6bd75.css","_app/immutable/assets/Phone.4358ff52.css","_app/immutable/assets/Projects.8b0a78af.css","_app/immutable/assets/Whatsapp.5904f36e.css","_app/immutable/assets/ChangelessPanel.746d3e6a.css","_app/immutable/assets/CompoundItem.bf46bd73.css","_app/immutable/assets/Icon.49b96849.css","_app/immutable/assets/Panel.a32dc982.css","_app/immutable/assets/Title.7471c7d5.css"];
+export const fonts = ["_app/immutable/assets/Sansation_Bold.7de88c28.ttf","_app/immutable/assets/Sansation_Light.551210bb.ttf","_app/immutable/assets/Sansation_Regular.c0770982.ttf","_app/immutable/assets/Sansation_Italic.ff028329.ttf","_app/immutable/assets/Sansation_Bold_Italic.80eaff3a.ttf","_app/immutable/assets/Sansation_Light_Italic.28efa1a9.ttf","_app/immutable/assets/moupaliLatin.8b97d975.woff2","_app/immutable/assets/RobotoMono-VariableFont_wght.173a14a0.ttf","_app/immutable/assets/RobotoMono-Italic-VariableFont_wght.c4050696.ttf"];
