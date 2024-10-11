@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,30 +10,54 @@
             margin: 0;
             padding: 0;
             border: none;
-            color: white;
         }
 
-        body, html {
+        body,
+        html {
             overflow-x: hidden;
             background: black;
         }
 
-        iframe, body, html {
+        iframe,
+        body,
+        html {
             width: 100vw;
-            height: calc(100vh);
+            height: 100vh;
         }
+
         .goBack {
-            margin-left: 1rem;
-            margin-block: 1rem;
+            margin-left: 2rem;
+            margin-block: 2rem;
+            color: white;
+        }
+
+        #translate {
+            background: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
     </style>
 </head>
+
 <body>
+    <div id="translate"></div>
+
     <a href="../">
-        <h1 class="goBack">go back</h1>
+        <h1 class="goBack">return</h1>
     </a>
 
 
     <iframe src="./src/luis henrique de lameida - resume - 2024.pdf"></iframe>
 </body>
+
+<script>
+    function googleTranslateElementInit() {
+        new google.translate.TranslateElement({ pageLanguage: 'en' }, 'translate');
+    }
+</script>
+
+<script type="text/javascript"
+    src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </html>
