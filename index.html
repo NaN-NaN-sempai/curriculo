@@ -27,7 +27,7 @@
 </body>
 
 <script type="module">
-    let loadinLocal = false;
+    let loadingLocal = false;
 
     import { fileColors, colors, fileDesc } from './src/scripts/filesOptions.js';    
     import { randomColor, isMedia, getContrastingColor } from './src/scripts/utils.js';
@@ -66,7 +66,7 @@
         }
 
 
-        if (loadinLocal && percentages) return new Promise((resolve, reject) => {
+        if (loadingLocal && percentages) return new Promise((resolve, reject) => {
             console.log("Loading Local Data:", repo, branch);
             
             resolve(percentages);
