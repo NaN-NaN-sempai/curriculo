@@ -24,6 +24,8 @@
             <li> </li>
         </ul>
     </div>
+
+    <div class="hoverTitle"></div>
 </body>
 
 <script type="module">
@@ -40,7 +42,7 @@
             name: "Online - 2024",
             repo: "Resume-Svelte",
             branch: "main",
-            link: "https://luishenrique-resume.vercel.app/",
+            link: "https://resume.luishenrique.space/",
         },
         {
             name: "PDF - 2024",
@@ -51,6 +53,8 @@
     ];
         
 
+    let hoverTitle = document.querySelector(".hoverTitle");
+    
     async function fetchFileTypes(repo, branch) {
         let percentages;
 
@@ -152,10 +156,18 @@
 
                 let span = document.createElement("span");
                 span.innerHTML = key;
-                span.title = `${key.toUpperCase()} - ${porc.toFixed(1)}% ${fileDesc[key] ? "- " + fileDesc[key] : ""}`;
                 span.style.setProperty("--_porc", porc + "%");
                 span.style.setProperty("--_color", color);
                 span.style.setProperty("--_colorTxt", contrast);
+
+                span.addEventListener("mouseenter", () => {
+                    let height = span.getBoundingClientRect().bottom; 
+                    hoverTitle.style.bottom = (innerHeight - height + 30) + "px";
+                    hoverTitle.innerHTML = `<span class="extension" style="color: ${contrast}; background: ${color}">${key.toUpperCase()} - ${porc.toFixed(1)}%</span> ${fileDesc[key] ? "- " + fileDesc[key] : ""}`;
+                    hoverTitle.classList.add("show");
+                });
+
+                span.addEventListener("mouseleave", () => hoverTitle.classList.remove("show"))
                 graph.append(span);
             }
 
@@ -182,7 +194,11 @@
         });
     });
 
+    document.addEventListener("mousemove", e=>{
+        if(!hoverTitle.classList.contains("show")) return;
 
+        hoverTitle.style.left = e.clientX + "px";
+    })
 
 </script>
 
